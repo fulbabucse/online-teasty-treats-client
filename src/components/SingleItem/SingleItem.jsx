@@ -1,9 +1,11 @@
 import React from "react";
+import { useContext } from "react";
 import { FaPlus, FaMinus, FaTimes } from "react-icons/fa";
+import { ShopContexts } from "../../contexts/ShopContext";
 
 const SingleItem = ({ item }) => {
+  const { removeProduct } = useContext(ShopContexts);
   const { idMeal, strMeal, strMealThumb } = item;
-  console.log(item);
   return (
     <div>
       <div className="bg-gray-100 w-2/4 mx-auto rounded-md flex items-center">
@@ -25,7 +27,7 @@ const SingleItem = ({ item }) => {
               </button>
             </div>
             <div>
-              <button>
+              <button onClick={() => removeProduct(idMeal)}>
                 <FaTimes className="text-5xl text-red-500"></FaTimes>
               </button>
             </div>

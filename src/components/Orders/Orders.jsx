@@ -10,7 +10,7 @@ const Orders = () => {
     <div className="mt-6">
       <div className="grid grid-cols-1 gap-5">
         {orders.map((item, index) => (
-          <SingleItem key={item.index} item={item}></SingleItem>
+          <SingleItem key={index} item={item}></SingleItem>
         ))}
       </div>
     </div>

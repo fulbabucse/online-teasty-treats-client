@@ -10,7 +10,12 @@ const ShopContext = ({ children }) => {
     setOrders(newOrders);
   };
 
-  const shopInfo = { handleAddToCart, orders };
+  const removeProduct = (idMeal) => {
+    const restProducts = orders.filter((order) => order.idMeal !== idMeal);
+    setOrders(restProducts);
+  };
+
+  const shopInfo = { handleAddToCart, orders, removeProduct };
   return (
     <div>
       <ShopContexts.Provider value={shopInfo}>{children}</ShopContexts.Provider>
