@@ -22,7 +22,7 @@ const SingleItem = ({ item }) => {
       <div className="bg-gray-100 w-3/4 lg:w-2/4 mx-auto rounded-md flex items-center p-3 gap-3">
         <div>
           <img
-            className="w-28 h-24 rounded-md"
+            className="w-24 h-20 rounded-md"
             src={strMealThumb}
             alt={strMeal}
           />
@@ -33,9 +33,15 @@ const SingleItem = ({ item }) => {
           </div>
           <div className="flex">
             <div className="flex items-center mr-6">
-              <button onClick={decreaseQuantity}>
-                <FaMinus className="text-xl"></FaMinus>
-              </button>
+              {quantity === 0 ? (
+                <button className="btn-disabled">
+                  <FaMinus className="text-xl"></FaMinus>
+                </button>
+              ) : (
+                <button onClick={decreaseQuantity}>
+                  <FaMinus className="text-xl"></FaMinus>
+                </button>
+              )}
               <p className="mx-2 text-slate-600 text-2xl">{quantity}</p>
               <button onClick={increaseQuantity}>
                 <FaPlus className="text-xl"></FaPlus>
