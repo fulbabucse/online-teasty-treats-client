@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/UserContext";
+import UserThumb from "../../assets/user_thumbnail.jpg";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -57,13 +58,48 @@ const Navbar = () => {
                 <NavLink to="/contact">Contact</NavLink>
               </li>
 
-              <li className="nav-items">
-                {user?.uid && (
-                  <NavLink to="/profile">Welcome, {user?.email}</NavLink>
-                )}
-              </li>
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL || UserThumb} />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="flex flex-col gap-3 items-center mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 w-52"
+                >
+                  <li>
+                    {user?.uid && (
+                      <NavLink to="/profile">Welcome, {user?.email}</NavLink>
+                    )}
+                  </li>
+                  <li className="text-center">
+                    {user?.uid || user?.email ? (
+                      <button
+                        onClick={signOutUser}
+                        className="btn btn-sm text-white"
+                      >
+                        Sign Out
+                      </button>
+                    ) : (
+                      <NavLink
+                        to="/signin"
+                        className="text-center bg-amber-300"
+                      >
+                        <button className="text-black">Sign In</button>
+                      </NavLink>
+                    )}
+                  </li>
+                </ul>
+              </div>
 
               <li className="nav-items">
+                {/* {user?.uid && (
+                  <NavLink to="/profile">Welcome, {user?.email}</NavLink>
+                )} */}
+              </li>
+
+              {/* <li className="nav-items">
                 {user?.uid || user?.email ? (
                   <button onClick={signOutUser} className="btn btn-sm">
                     Sign Out
@@ -73,7 +109,7 @@ const Navbar = () => {
                     <NavLink to="/signin">Sign In</NavLink>
                   </button>
                 )}
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
