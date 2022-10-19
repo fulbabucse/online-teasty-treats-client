@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { XMarkIcon, Bars3BottomRightIcon } from "@heroicons/react/24/solid";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const [navbar, setNavbar] = useState(false);
 
   return (
@@ -55,7 +58,13 @@ const Navbar = () => {
               </li>
 
               <li className="nav-items">
-                <NavLink to="/login">Login</NavLink>
+                {user?.name && (
+                  <NavLink to="/profile">Welcome, {user.name}</NavLink>
+                )}
+              </li>
+
+              <li className="nav-items">
+                <NavLink to="/signin">Sign In</NavLink>
               </li>
             </ul>
           </div>

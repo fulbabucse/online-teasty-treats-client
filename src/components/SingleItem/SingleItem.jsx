@@ -7,7 +7,7 @@ import { ShopContexts } from "../../contexts/ShopContext";
 const SingleItem = ({ item }) => {
   const { removeProduct } = useContext(ShopContexts);
   const { idMeal, strMeal, strMealThumb } = item;
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);

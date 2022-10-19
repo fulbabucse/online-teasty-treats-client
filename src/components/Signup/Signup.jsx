@@ -1,8 +1,37 @@
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
 import { FaGoogle, FaTwitter, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Signup = () => {
+  const [errorPassword, setErrorPassword] = useState("");
+  const { createUser } = useContext(AuthContext);
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    setErrorPassword("");
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirm = form.confirm.value;
+
+    if (password !== confirm) {
+      setErrorPassword("Password did not match!!");
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((err) => {
+        console.error(err);
+        setErrorPassword(err.message);
+      });
+  };
   return (
     <div className="flex justify-center py-5">
       <div className="card card-compact flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-7">
@@ -10,7 +39,7 @@ const Signup = () => {
           <h3 className="text-3xl font-bold text-slate-700">Sign Up</h3>
           <p>Create a new account</p>
         </div>
-        <form className="card-body">
+        <form onSubmit={handleSignUp} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
@@ -47,8 +76,21 @@ const Signup = () => {
               className="input input-bordered"
               required
             />
+          </div>
+
+          <div className="form-control">
             <label className="label">
-              <p>Your password was wrong</p>
+              <span className="label-text">Confirm Password</span>
+            </label>
+            <input
+              type="password"
+              name="confirm"
+              placeholder="Confirm Password"
+              className="input input-bordered"
+              required
+            />
+            <label className="label">
+              <p className="text-red-500">{errorPassword}</p>
             </label>
           </div>
           <div className="form-control mt-6">
