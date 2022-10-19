@@ -32,19 +32,23 @@ const Signin = () => {
   };
 
   const handleGoogleSignIn = () => {
+    const from = location.state?.from?.pathname || "/";
     googleSignIn()
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };
 
   const handleGithubSignIn = () => {
+    const from = location.state?.from?.pathname || "/";
     githubSignIn()
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };
