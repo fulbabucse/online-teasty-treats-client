@@ -10,6 +10,7 @@ import Signin from "../components/Signin/Signin";
 import Signup from "../components/Signup/Signup";
 import UserProfile from "../components/UserProfile/UserProfile";
 import Root from "../layouts/Root";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const productsData = () =>
   fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
@@ -22,7 +23,14 @@ export const router = createBrowserRouter([
       { path: "/", element: <Home></Home> },
       { path: "home", element: <Home></Home> },
       { path: "shop", loader: productsData, element: <Shop></Shop> },
-      { path: "orders", element: <Orders></Orders> },
+      {
+        path: "orders",
+        element: (
+          <PrivateRoute>
+            <Orders></Orders>
+          </PrivateRoute>
+        ),
+      },
       { path: "signin", element: <Signin></Signin> },
       { path: "signup", element: <Signup></Signup> },
       { path: "profile", element: <UserProfile></UserProfile> },
