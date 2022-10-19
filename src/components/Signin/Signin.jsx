@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { FaGoogle, FaTwitter, FaFacebook } from "react-icons/fa";
+import { FaGoogle, FaTwitter, FaFacebook, FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 
 const Signin = () => {
   const [errorPassword, setErrorPassword] = useState("");
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleSignIn, githubSignIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +30,25 @@ const Signin = () => {
         setErrorPassword(err.message);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="flex justify-center py-5">
       <div className="card card-compact flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-7">
@@ -75,8 +94,11 @@ const Signin = () => {
         <div className="flex flex-col items-center gap-2">
           <p>Login with social accounts</p>
           <div className="flex justify-center gap-4 text-2xl">
-            <button>
+            <button onClick={handleGoogleSignIn}>
               <FaGoogle></FaGoogle>
+            </button>
+            <button onClick={handleGithubSignIn}>
+              <FaGithub></FaGithub>
             </button>
             <button>
               <FaFacebook></FaFacebook>

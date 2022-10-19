@@ -98,7 +98,7 @@ const Signup = () => {
           </div>
         </form>
         <div className="flex flex-col items-center gap-2">
-          <p>Sign Up with social accounts</p>
+          {/* <p>Sign Up with social accounts</p>
           <div className="flex justify-center gap-4 text-2xl">
             <button>
               <FaGoogle></FaGoogle>
@@ -109,7 +109,7 @@ const Signup = () => {
             <button>
               <FaTwitter></FaTwitter>
             </button>
-          </div>
+          </div> */}
           <p>
             Already have an Account? <Link to="/signin">Sign In</Link>
           </p>

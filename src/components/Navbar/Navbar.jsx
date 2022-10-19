@@ -61,7 +61,10 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src={user?.photoURL || UserThumb} />
+                    <img
+                      src={user?.photoURL || UserThumb}
+                      alt={user?.displayName}
+                    />
                   </div>
                 </label>
                 <ul
@@ -70,7 +73,9 @@ const Navbar = () => {
                 >
                   <li>
                     {user?.uid && (
-                      <NavLink to="/profile">Welcome, {user?.email}</NavLink>
+                      <NavLink to="/profile">
+                        Welcome, {user?.email || user?.displayName}
+                      </NavLink>
                     )}
                   </li>
                   <li className="text-center">
@@ -93,13 +98,13 @@ const Navbar = () => {
                 </ul>
               </div>
 
-              <li className="nav-items">
-                {/* {user?.uid && (
+              {/* <li className="nav-items">
+                {user?.uid && (
                   <NavLink to="/profile">Welcome, {user?.email}</NavLink>
-                )} */}
+                )}
               </li>
 
-              {/* <li className="nav-items">
+              <li className="nav-items">
                 {user?.uid || user?.email ? (
                   <button onClick={signOutUser} className="btn btn-sm">
                     Sign Out
