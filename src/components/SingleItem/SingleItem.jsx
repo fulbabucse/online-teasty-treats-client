@@ -34,16 +34,19 @@ const SingleItem = ({ item }) => {
           <div className="flex">
             <div className="flex items-center mr-6">
               {quantity === 0 ? (
-                <button className="btn-disabled">
+                <button className="btn btn-disabled">
                   <FaMinus className="text-xl"></FaMinus>
                 </button>
               ) : (
-                <button onClick={decreaseQuantity}>
+                <button
+                  className="btn btn-success text-white"
+                  onClick={decreaseQuantity}
+                >
                   <FaMinus className="text-xl"></FaMinus>
                 </button>
               )}
               <p className="mx-2 text-slate-600 text-2xl">{quantity}</p>
-              <button onClick={increaseQuantity}>
+              <button className="btn btn-secondary" onClick={increaseQuantity}>
                 <FaPlus className="text-xl"></FaPlus>
               </button>
             </div>
