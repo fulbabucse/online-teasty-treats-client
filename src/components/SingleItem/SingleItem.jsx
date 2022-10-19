@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { FaPlus, FaMinus, FaTimes } from "react-icons/fa";
 import { ShopContexts } from "../../contexts/ShopContext";
@@ -6,24 +7,38 @@ import { ShopContexts } from "../../contexts/ShopContext";
 const SingleItem = ({ item }) => {
   const { removeProduct } = useContext(ShopContexts);
   const { idMeal, strMeal, strMealThumb } = item;
+  const [quantity, setQuantity] = useState(0);
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity(quantity - 1);
+  };
+
   return (
     <div>
-      <div className="bg-gray-100 w-2/4 mx-auto rounded-md flex items-center">
+      <div className="bg-gray-100 w-3/4 lg:w-2/4 mx-auto rounded-md flex items-center p-3 gap-3">
         <div>
-          <img className="w-28 h-24 p-2" src={strMealThumb} alt={strMeal} />
+          <img
+            className="w-28 h-24 rounded-md"
+            src={strMealThumb}
+            alt={strMeal}
+          />
         </div>
-        <div className="w-full flex justify-between items-center p-3">
+        <div className="w-full flex justify-between items-center">
           <div>
-            <h4 className="text-xl font-semibold">{strMeal}</h4>
+            <h4 className="text-lg lg:text-xl font-semibold">{strMeal}</h4>
           </div>
           <div className="flex">
             <div className="flex items-center mr-6">
-              <button>
-                <FaPlus className="text-xl"></FaPlus>
-              </button>
-              <p className="mx-2 text-slate-600 text-2xl">0</p>
-              <button>
+              <button onClick={decreaseQuantity}>
                 <FaMinus className="text-xl"></FaMinus>
+              </button>
+              <p className="mx-2 text-slate-600 text-2xl">{quantity}</p>
+              <button onClick={increaseQuantity}>
+                <FaPlus className="text-xl"></FaPlus>
               </button>
             </div>
             <div>
