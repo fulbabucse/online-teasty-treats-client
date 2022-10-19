@@ -2,11 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import About from "../components/About/About";
 import Contact from "../components/Contact/Contact";
 import Home from "../components/Home/Home";
-import Login from "../components/Login/Login";
 import Orders from "../components/Orders/Orders";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import Products from "../components/Products/Products";
 import Shop from "../components/Shop/Shop";
+import Signin from "../components/Signin/Signin";
 import Signup from "../components/Signup/Signup";
 import UserProfile from "../components/UserProfile/UserProfile";
 import Root from "../layouts/Root";
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       { path: "home", element: <Home></Home> },
       { path: "shop", loader: productsData, element: <Shop></Shop> },
       { path: "orders", element: <Orders></Orders> },
-      { path: "login", element: <Login></Login> },
+      { path: "signin", element: <Signin></Signin> },
       { path: "signup", element: <Signup></Signup> },
       { path: "profile", element: <UserProfile></UserProfile> },
       {
