@@ -18,41 +18,40 @@ const SingleItem = ({ item }) => {
   };
 
   return (
-    <div>
-      <div className="bg-gray-100 w-3/4 lg:w-2/4 mx-auto rounded-md flex items-center p-3 gap-3">
+    <div className="px-2">
+      <div className="bg-gray-100 w-full lg:w-2/4 mx-auto rounded-md flex items-center p-1 lg:p-3 gap-3">
         <div>
           <img
-            className="w-24 h-20 rounded-md"
+            className="w-12 h-10 lg:w-24 lg:h-20 rounded-md"
             src={strMealThumb}
             alt={strMeal}
           />
         </div>
         <div className="w-full flex justify-between items-center">
           <div>
-            <h4 className="text-lg lg:text-xl font-semibold">{strMeal}</h4>
+            <h4 className="text-sm lg:text-xl font-semibold">{strMeal}</h4>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <div className="flex items-center mr-6">
               {quantity === 0 ? (
-                <button className="btn btn-disabled">
-                  <FaMinus className="text-xl"></FaMinus>
+                <button className="bg-transparent btn-disabled">
+                  <FaMinus className="text-lg"></FaMinus>
                 </button>
               ) : (
-                <button
-                  className="btn btn-success text-white"
-                  onClick={decreaseQuantity}
-                >
-                  <FaMinus className="text-xl"></FaMinus>
+                <button className="" onClick={decreaseQuantity}>
+                  <FaMinus className="text-lg"></FaMinus>
                 </button>
               )}
-              <p className="mx-2 text-slate-600 text-2xl">{quantity}</p>
-              <button className="btn btn-secondary" onClick={increaseQuantity}>
-                <FaPlus className="text-xl"></FaPlus>
+              <p className="mx-2 text-slate-600 text-xl lg:text-2xl">
+                {quantity}
+              </p>
+              <button className="" onClick={increaseQuantity}>
+                <FaPlus className="text-lg"></FaPlus>
               </button>
             </div>
             <div>
               <button onClick={() => removeProduct(idMeal)}>
-                <FaTimes className="text-5xl text-red-500"></FaTimes>
+                <FaTimes className="text-2xl lg:text-5xl text-red-500"></FaTimes>
               </button>
             </div>
           </div>

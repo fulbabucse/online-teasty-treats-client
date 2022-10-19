@@ -6,12 +6,8 @@ const ProductCategory = ({ category }) => {
   return (
     <div>
       <div className="card card-compact bg-base-100 shadow-xl">
-        <figure>
-          <img
-            src={strCategoryThumb}
-            alt={strCategory}
-            className="bg-amber-100/50"
-          />
+        <figure className="bg-amber-100/50">
+          <img src={strCategoryThumb} alt={strCategory} />
         </figure>
         <div className="card-body bg-amber-200 hover:bg-amber-300 transition-all">
           <Link
