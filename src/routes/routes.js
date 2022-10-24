@@ -43,8 +43,8 @@ export const router = createBrowserRouter([
         },
         element: <ProductDetails></ProductDetails>,
       },
-      { path: "about", element: <About></About> },
-      { path: "contact", element: <Contact></Contact> },
+      // { path: "about", element: <About></About> },
+      // { path: "contact", element: <Contact></Contact> },
       {
         path: "/category/:strCategory",
         loader: async ({ params }) => {

@@ -85,13 +85,10 @@ const Signin = () => {
               required
             />
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-              <p>{errorPassword}</p>
+              <p className="text-red-500">{errorPassword}</p>
             </label>
           </div>
-          <div className="form-control mt-6">
+          <div className="form-control">
             <button className="btn">Sign In</button>
           </div>
         </form>

@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import Product from "../Product/Product";
 
 const Products = () => {
-  const [showMore, setShowMore] = useState(8);
+  const [showMore, setShowMore] = useState(5);
   const productsData = useLoaderData().meals;
 
   const products = productsData.slice(0, showMore);

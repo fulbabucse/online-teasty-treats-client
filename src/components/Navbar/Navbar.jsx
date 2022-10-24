@@ -50,13 +50,13 @@ const Navbar = () => {
                 <NavLink to="/Orders">Orders</NavLink>
               </li>
 
-              <li className="nav-items">
+              {/* <li className="nav-items">
                 <NavLink to="/about">About</NavLink>
               </li>
 
               <li className="nav-items">
                 <NavLink to="/contact">Contact</NavLink>
-              </li>
+              </li> */}
 
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

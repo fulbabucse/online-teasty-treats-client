@@ -8,7 +8,7 @@ const Product = ({ product }) => {
   const { idMeal, strMeal, strMealThumb } = product;
   return (
     <div>
-      <div className="card card-compact bg-base-100 shadow-xl">
+      <div className="card card-compact bg-base-100 rounded-md shadow-xl">
         <figure>
           <img src={strMealThumb} alt={strMeal} />
         </figure>
